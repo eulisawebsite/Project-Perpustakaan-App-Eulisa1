@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\Authors\AuthorController;
-use App\Http\Controllers\Books\BooksController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\Pengunjung\PengunjungController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\Users\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
