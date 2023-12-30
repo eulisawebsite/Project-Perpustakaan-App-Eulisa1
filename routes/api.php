@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\Pengunjung\PengunjungController;
-use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +40,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::post('save-data',  [PengunjungController::class, 'savePengunjung']);
         Route::delete('delete-data',  [PengunjungController::class, 'deletePengunjung']);
     });
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('get-data',  [MenuController::class, 'getMenu']);
+    });
 });
 
 Route::group(['prefix' => 'users'], function () {
@@ -48,8 +51,3 @@ Route::group(['prefix' => 'users'], function () {
     Route::put('update-data', [UserController::class, 'updateDataUser']);
     Route::delete('delete-data', [UserController::class, 'deleteDataUser']);
 });
-
-Route::post('/peminjaman/create', [PeminjamanController::class, 'create']);
-Route::get('/peminjaman/read', [PeminjamanController::class, 'read']);
-Route::put('/peminjaman/update-status/{no_peminjaman}', [PeminjamanController::class, 'updateStatus']);
-Route::delete('/peminjaman/delete/{no_peminjaman}', [PeminjamanController::class, 'delete']);
